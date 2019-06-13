@@ -2,7 +2,7 @@
 
 set -e
 
-# not to sleep in 1 hour
+# not to sleep  1 hour
 caffeinate -u -t 3600  
 
 # homebrew
