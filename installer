@@ -10,7 +10,7 @@ brew cask install rstudio
 
 # python
 wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
-bash -b Anaconda3-5.2.0-MacOSX-x86_64.sh
+bash Anaconda3-5.2.0-MacOSX-x86_64.sh -b
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 
