@@ -5,5 +5,12 @@ brew install unzip vim emacs tmux wget screen r
 brew cask install rstudio
 
 wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
-bash Anaconda3-5.2.0-MacOSX-x86_64.sh -b
+bash -b Anaconda3-5.2.0-MacOSX-x86_64.sh
+echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
+
+if !(type "jupyter" > /dev/null 2>&1); then
+    echo "ERROR: jupyter not installed"
+else
+    echo "SUCCESS"
+fi
