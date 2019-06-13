@@ -9,18 +9,19 @@ bash -b Anaconda3-5.2.0-MacOSX-x86_64.sh
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 
-error=false
-if !(type "jupyter" > /dev/null 2>&1); then
-    echo "ERROR: jupyter not installed"
-    error=true
+success=true
+
+if !((type "jupyter" > /dev/null 2>&1) && (type "python" > /dev/null 2>&1)); then
+    echo "ERROR: python & jupyter not installed"
+    success=false
 fi
 
-if !(type "r" > /dev/null 2>&1); then
-    echo "ERROR: R not installed"
-    error=true
+if !((type "r" > /dev/null 2>&1) && ([ -e /Applications/RStudio.app ])); then
+    echo "ERROR: R & RStudio not installed"
+    success=false
 fi
 
-if [ $error ]; then
+if [ ! $success ]; then
     exit 1
 else
     echo "SUCCESS"
