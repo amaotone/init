@@ -5,5 +5,5 @@ brew install unzip vim emacs tmux wget screen r
 brew cask install rstudio
 
 wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
-bash -b Anaconda3-5.2.0-MacOSX-x86_64.sh
+bash Anaconda3-5.2.0-MacOSX-x86_64.sh -b
 source ~/.bash_profile
