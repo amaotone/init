@@ -25,8 +25,8 @@ if !($python_exist && $jupyter_exist); then
 fi
 
 r_exist=$(type "r" > /dev/null 2>&1)
-rstudio_exist=$(!$(test -e /Applications/RStudio.app))
-if !($r_exist && !($rstudio_exist)); then
+rstudio_not_exist=$(test -e /Applications/RStudio.app)
+if !($r_exist && !$rstudio_not_exist); then
     echo "ERROR: R/RStudio not installed"
     success=false
 fi
