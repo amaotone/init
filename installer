@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 # homebrew
@@ -11,21 +10,28 @@ brew cask install rstudio
 
 # python
 wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
-bash Anaconda3-5.2.0-MacOSX-x86_64.sh -b
+bash -b Anaconda3-5.2.0-MacOSX-x86_64.sh
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 
 # test
 success=true
-if !((type "jupyter" > /dev/null 2>&1) && (type "python" > /dev/null 2>&1)); then
-    echo "ERROR: python & jupyter not installed"
+
+jupyter_exist=$(type "jupyter" > /dev/null 2>&1)
+python_exist=$(type "python" > /dev/null 2>&1)
+if !($python_exist && $jupyter_exist); then
+    echo "ERROR: python/jupyter not installed"
     success=false
 fi
-if !((type "r" > /dev/null 2>&1) && ([ -e /Applications/RStudio.app ])); then
-    echo "ERROR: R & RStudio not installed"
+
+r_exist=$(type "r" > /dev/null 2>&1)
+rstudio_exist=$(!$(test -e /Applications/RStudio.app))
+if !($r_exist && !($rstudio_exist)); then
+    echo "ERROR: R/RStudio not installed"
     success=false
 fi
-if [ ! $success ]; then
+
+if [ !$success ]; then
     exit 1
 else
     echo "SUCCESS"
