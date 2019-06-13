@@ -30,8 +30,8 @@ if !($r_exist); then
     success=false
 fi
 
-if [ !$success ]; then
-    exit 1
-else
+if "{$success}"; then
     echo "SUCCESS"
+else
+    exit 1
 fi
