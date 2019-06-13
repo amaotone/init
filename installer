@@ -19,18 +19,18 @@ success=true
 
 jupyter_exist=$(type "jupyter" > /dev/null 2>&1)
 python_exist=$(type "python" > /dev/null 2>&1)
-if !($python_exist && $jupyter_exist); then
+if [ !($python_exist && $jupyter_exist) ]; then
     echo "ERROR: python/jupyter not installed"
     success=false
 fi
 
 r_exist=$(type "r" > /dev/null 2>&1)
-if !($r_exist); then
+if [ ! $r_exist ]; then
     echo "ERROR: R not installed"
     success=false
 fi
 
-if "{$success}"; then
+if [ $success ]; then
     echo "SUCCESS"
 else
     exit 1
