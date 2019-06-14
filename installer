@@ -15,17 +15,14 @@ echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 
 # test
-success=true
+success=1
 
-jupyter_exist=$(type "jupyter" > /dev/null 2>&1)
-python_exist=$(type "python" > /dev/null 2>&1)
-if [ ! $python_exist ] || [ ! $jupyter_exist ]; then
+if !(type "python" > /dev/null 2>&1) || !(type "jupyter" > /dev/null 2>&1); then
     echo "ERROR: python/jupyter not installed"
     success=false
 fi
 
-r_exist=$(type "r" > /dev/null 2>&1)
-if [ ! $r_exist ]; then
+if !(type "r" > /dev/null 2>&1); then
     echo "ERROR: R not installed"
     success=false
 fi
