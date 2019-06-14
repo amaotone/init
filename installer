@@ -19,7 +19,7 @@ success=true
 
 jupyter_exist=$(type "jupyter" > /dev/null 2>&1)
 python_exist=$(type "python" > /dev/null 2>&1)
-if [ ! ($python_exist && $jupyter_exist) ]; then
+if [ ! $python_exist ] || [ ! $jupyter_exist ]; then
     echo "ERROR: python/jupyter not installed"
     success=false
 fi
