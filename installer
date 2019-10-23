@@ -13,22 +13,3 @@ wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
 bash Anaconda3-5.2.0-MacOSX-x86_64.sh -b
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
-
-# test
-success=1
-
-if !(type "python" > /dev/null 2>&1) || !(type "jupyter" > /dev/null 2>&1); then
-    echo "ERROR: python/jupyter not installed"
-    success=false
-fi
-
-if !(type "r" > /dev/null 2>&1); then
-    echo "ERROR: R not installed"
-    success=false
-fi
-
-if [ $success ]; then
-    echo "SUCCESS"
-else
-    exit 1
-fi
